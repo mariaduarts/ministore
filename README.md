@@ -22,7 +22,7 @@ cd ministore
 
 ```bash
 git remote remove origin
-git remote add origin https://github.com/SEU_USUARIO/ministore.git
+git remote add origin https://github.com/mariaduarts/ministore.git
 git push -u origin main
 ```
 
