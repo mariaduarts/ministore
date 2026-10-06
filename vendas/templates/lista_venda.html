@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Vendas — MiniStore{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Vendas</h1>
+    <a href="{{ url_for('vendas.novo') }}" class="btn btn-primary">Nova Venda</a>
+</div>
+
+{% if vendas %}
+<p>{{ vendas|length }} venda(s) registrada(s).</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Data</th>
+            <th>Cliente</th>
+            <th>Total (R$)</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for venda in vendas %}
+        <tr>
+            <td>{{ venda.id }}</td>
+            <td>{{ venda.data_venda.strftime('%d/%m/%Y %H:%M') if venda.data_venda else '-' }}</td>
+            <td>{{ venda.cliente_nome }}</td>
+            <td>{{ "%.2f"|format(venda.total) }}</td>
+            <td>
+                <a href="{{ url_for('vendas.detalhe', id=venda.id) }}" class="btn btn-secondary">Ver Itens</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Nenhuma venda registrada.</p>
+{% endif %}
+{% endblock %}

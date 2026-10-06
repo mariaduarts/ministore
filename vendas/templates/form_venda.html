@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Nova Venda — MiniStore{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Registrar Venda</h1>
+</div>
+
+<form action="{{ url_for('vendas.novo') }}" method="POST">
+    <div class="form-group">
+        <label for="id_cliente">Cliente *</label>
+        <select id="id_cliente" name="id_cliente" class="form-control" required>
+            <option value="">Selecione um cliente</option>
+            {% for c in clientes %}
+                <option value="{{ c.id }}">{{ c.nome }} (CPF: {{ c.cpf|default('-') }})</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <h3>Itens da Venda</h3>
+
+    <div class="form-group">
+        <label>Produto 1 *</label>
+        <select name="id_produto[]" class="form-control" required>
+            <option value="">Selecione o produto</option>
+            {% for p in produtos %}
+                <option value="{{ p.id }}">{{ p.nome }} — R$ {{ "%.2f"|format(p.preco) }}</option>
+            {% endfor %}
+        </select>
+        <label style="margin-top: 5px;">Quantidade</label>
+        <input type="number" name="quantidade[]" value="1" min="1" class="form-control" style="max-width: 120px;">
+    </div>
+
+    <div class="form-group">
+        <label>Produto 2 (opcional)</label>
+        <select name="id_produto[]" class="form-control">
+            <option value="">Selecione o produto</option>
+            {% for p in produtos %}
+                <option value="{{ p.id }}">{{ p.nome }} — R$ {{ "%.2f"|format(p.preco) }}</option>
+            {% endfor %}
+        </select>
+        <label style="margin-top: 5px;">Quantidade</label>
+        <input type="number" name="quantidade[]" value="0" min="0" class="form-control" style="max-width: 120px;">
+    </div>
+
+    <div class="form-group">
+        <label>Produto 3 (opcional)</label>
+        <select name="id_produto[]" class="form-control">
+            <option value="">Selecione o produto</option>
+            {% for p in produtos %}
+                <option value="{{ p.id }}">{{ p.nome }} — R$ {{ "%.2f"|format(p.preco) }}</option>
+            {% endfor %}
+        </select>
+        <label style="margin-top: 5px;">Quantidade</label>
+        <input type="number" name="quantidade[]" value="0" min="0" class="form-control" style="max-width: 120px;">
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Concluir Venda</button>
+        <a href="{{ url_for('vendas.listar') }}" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+{% endblock %}
