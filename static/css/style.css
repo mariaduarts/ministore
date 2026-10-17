@@ -1,4 +1,4 @@
-/* style.css */
+/* static/css/style.css */
 
 * {
     box-sizing: border-box;
@@ -107,6 +107,7 @@ main {
     text-decoration: none;
     cursor: pointer;
     border: none;
+    vertical-align: middle;
     transition: all 0.2s;
 }
 
@@ -165,6 +166,27 @@ main {
     padding: 12px 16px;
     font-size: 14px;
     border-bottom: 1px solid #eee;
+    vertical-align: middle;
+    word-break: break-word;
+}
+
+.table td:last-child {
+    white-space: nowrap;
+    width: 1%;
+}
+
+.table td form {
+    display: inline-block !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    max-width: none !important;
+}
+
+.table td .btn {
+    margin-right: 4px;
 }
 
 .table tbody tr:hover {
@@ -175,8 +197,8 @@ main {
     border-bottom: none;
 }
 
-/* FORMULÁRIO */
-form {
+/* FORMULÁRIO DE PÁGINA */
+main > form {
     background: #fff;
     padding: 24px;
     border-radius: 8px;
@@ -225,6 +247,7 @@ footer {
     font-size: 13px;
     margin-top: 48px;
 }
+
 /* CARDS DASHBOARD */
 .cards {
     display: flex;
