@@ -24,11 +24,11 @@
         {% for venda in vendas %}
         <tr>
             <td>{{ venda.id }}</td>
-            <td>{{ venda.data_venda.strftime('%d/%m/%Y %H:%M') if venda.data_venda else '-' }}</td>
+            <td>{{ venda.data_venda }}</td>
             <td>{{ venda.cliente_nome }}</td>
-            <td>{{ "%.2f"|format(venda.total) }}</td>
+            <td>R$ {{ '%.2f'|format(venda.total) }}</td>
             <td>
-                <a href="{{ url_for('vendas.detalhe', id=venda.id) }}" class="btn btn-secondary">Ver Itens</a>
+                <a href="{{ url_for('vendas.detalhe', id=venda.id) }}" class="btn btn-secondary">Ver</a>
             </td>
         </tr>
         {% endfor %}
@@ -37,4 +37,5 @@
 {% else %}
 <p>Nenhuma venda registrada.</p>
 {% endif %}
+
 {% endblock %}
