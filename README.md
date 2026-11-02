@@ -77,6 +77,6 @@ ministore/
 |--------|--------|
 | Dashboard | ✅ Pronto |
 | Clientes | ✅ Pronto |
-| Categorias | 🔲 Implementar |
-| Produtos | 🔲 Implementar |
-| Vendas | 🔲 Implementar |
+| Categorias | ✅ Pronto |
+| Produtos |✅ Pronto |
+| Vendas | ✅ Pronto |
